@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.polypath">
 
     <application
         android:allowBackup="true"
@@ -13,14 +14,20 @@
         android:theme="@style/Theme.PolyPath"
         tools:targetApi="31">
         <activity
-            android:name=".LoginActivity"
+            android:name=".spainlanguage"
             android:exported="false" />
         <activity
-            android:name=".CreateAccountActivity"
+            android:name=".koreanlanguage"
             android:exported="false" />
         <activity
-            android:name=".dhhfgjf"
+            android:name=".japanlanguage"
             android:exported="false" />
+        <activity
+            android:name=".italylanguange"
+            android:exported="false" />
+        <activity
+            android:name=".chinalanguage"
+            android:exported="false" /> <!-- Main launcher activity -->
         <activity
             android:name=".MainActivity"
             android:exported="true">
@@ -29,7 +36,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> <!-- Other activities -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CreateAccountActivity"
+            android:exported="false" />
+        <activity android:name=".CountryListActivity" />
     </application>
 
 </manifest>

@@ -1,5 +1,6 @@
 package com.example.polypath;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -33,17 +34,19 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String enteredName = usernameField.getText().toString().trim();
 
-                // Retrieve the saved full name from SharedPreferences
                 SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-                String savedName = prefs.getString(KEY_FULL_NAME, "");
+                String savedName = prefs.getString(KEY_FULL_NAME, "").trim();
 
-                // Check if the entered name matches the saved name
                 if (enteredName.isEmpty()) {
                     loginResult.setText("Please enter your full name.");
                     loginResult.setTextColor(Color.RED);
                 } else if (enteredName.equals(savedName)) {
                     loginResult.setText("Login successful!");
                     loginResult.setTextColor(Color.GREEN);
+
+                    Intent intent = new Intent(LoginActivity.this, CountryListActivity.class);
+                    startActivity(intent);
+                    finish();
                 } else {
                     loginResult.setText("Name not recognized.");
                     loginResult.setTextColor(Color.RED);
