@@ -18,7 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class CountryListActivity extends AppCompatActivity {
 
     ListView languageListView;
-    String[] languages = {"Mandarin", "Italian", "Japanese", "Korean", "Spanish"};
+    String[] languages = {"China (Mandarin)", " Italy (Italian)", "Japan (Japanese)", "Korea (Korean)", "Spain (Spanish)"};
     int[] flags = {
             R.drawable.china,
             R.drawable.italy,
