@@ -29,7 +29,7 @@ public class KoreanLanguage5 extends AppCompatActivity {
         // "Back" button -> KoreanLanguage2 (fixed from KoreanLanguage4)
         Button btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
-            Intent intent = new Intent(KoreanLanguage5.this, KoreanScoreResults.class); // <- was pointing to KoreanLanguage4
+            Intent intent = new Intent(KoreanLanguage5.this, KoreanLanguage4.class); // <- was pointing to KoreanLanguage4
             startActivity(intent);
         });
     }
