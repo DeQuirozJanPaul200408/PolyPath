@@ -7,32 +7,32 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class koreanlanguage extends AppCompatActivity {
+public class KoreanLanguage2 extends AppCompatActivity {
 
     MediaPlayer mysound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_koreanlanguage);
+        setContentView(R.layout.activity_koreanlanguage2); // Make sure this layout exists
 
-        mysound = MediaPlayer.create(koreanlanguage.this, R.raw.annyeonghaseyo);
+        mysound = MediaPlayer.create(KoreanLanguage2.this, R.raw.salanghaeyo); // Check correct file name
 
         Button btnNext = findViewById(R.id.button3); // Next button
         btnNext.setOnClickListener(v -> {
-            Intent intent = new Intent(koreanlanguage.this, KoreanLanguage2.class);
+            Intent intent = new Intent(KoreanLanguage2.this, KoreanLanguage3.class);
             startActivity(intent);
         });
 
         Button btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
-            Intent intent = new Intent(koreanlanguage.this, CountryListActivity.class);
+            Intent intent = new Intent(KoreanLanguage2.this, koreanlanguage.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
         });
     }
 
-    public void korean(View v) {
+    public void salanghaeyo(View v) {
         mysound.start();
     }
 }
