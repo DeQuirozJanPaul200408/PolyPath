@@ -15,7 +15,14 @@ public class japanlanguage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_japanlanguage);
-        mysound = MediaPlayer.create(japanlanguage.this, R.raw.genkidesu_ka);
+
+        mysound = MediaPlayer.create(japanlanguage.this, R.raw.do_shita_no);
+
+        Button btnNext = findViewById(R.id.button3); // Next button
+        btnNext.setOnClickListener(v -> {
+            Intent intent = new Intent(japanlanguage.this, japanlanguage2.class);
+            startActivity(intent);
+        });
 
         Button btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
@@ -25,7 +32,7 @@ public class japanlanguage extends AppCompatActivity {
         });
     }
 
-    public void japan(View v) {
+    public void Dō_shita_no(View v) {
         mysound.start();
     }
 }

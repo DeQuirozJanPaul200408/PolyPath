@@ -7,32 +7,32 @@ import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class spainlanguage extends AppCompatActivity {
+public class italylanguage4 extends AppCompatActivity {
 
     MediaPlayer mysound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_spainlanguage);
+        setContentView(R.layout.activity_italylanguage4);
 
-        mysound = MediaPlayer.create(spainlanguage.this, R.raw.como_estas);
+        mysound = MediaPlayer.create(italylanguage4.this, R.raw.prego);
 
         Button btnNext = findViewById(R.id.button3); // Next button
         btnNext.setOnClickListener(v -> {
-            Intent intent = new Intent(spainlanguage.this, spainlanguage2.class);
+            Intent intent = new Intent(italylanguage4.this, italylanguage5.class);
             startActivity(intent);
         });
 
         Button btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
-            Intent intent = new Intent(spainlanguage.this, CountryListActivity.class);
+            Intent intent = new Intent(italylanguage4.this, italylanguage3.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
             startActivity(intent);
         });
     }
 
-    public void comoestas(View v) {
+    public void prego(View v) {
         mysound.start();
     }
 }

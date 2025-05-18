@@ -15,7 +15,14 @@ public class italylanguange extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_italylanguange);
-        mysound = MediaPlayer.create(italylanguange.this, R.raw.come_ti_chiami);
+
+        mysound = MediaPlayer.create(italylanguange.this, R.raw.ciao);
+
+        Button btnNext = findViewById(R.id.button3); // Next button
+        btnNext.setOnClickListener(v -> {
+            Intent intent = new Intent(italylanguange.this, italylanguage2.class);
+            startActivity(intent);
+        });
 
         Button btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
@@ -25,7 +32,7 @@ public class italylanguange extends AppCompatActivity {
         });
     }
 
-    public void italy(View v) {
+    public void ciao(View v) {
         mysound.start();
     }
 }

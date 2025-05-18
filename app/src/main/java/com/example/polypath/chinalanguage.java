@@ -15,7 +15,14 @@ public class chinalanguage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chinalanguage);
-        mysound = MediaPlayer.create(chinalanguage.this, R.raw.ni_hao_ma);
+
+        mysound = MediaPlayer.create(chinalanguage.this, R.raw.bukeqi);
+
+        Button btnNext = findViewById(R.id.button3); // Next button
+        btnNext.setOnClickListener(v -> {
+            Intent intent = new Intent(chinalanguage.this, chinalanguage2.class);
+            startActivity(intent);
+        });
 
         Button btnBack = findViewById(R.id.btnBack);
         btnBack.setOnClickListener(v -> {
@@ -25,7 +32,7 @@ public class chinalanguage extends AppCompatActivity {
         });
     }
 
-    public void china(View v) {
+    public void bukeqi(View v) {
         mysound.start();
     }
 }

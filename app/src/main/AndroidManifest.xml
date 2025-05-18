@@ -14,6 +14,72 @@
         android:theme="@style/Theme.PolyPath"
         tools:targetApi="31">
         <activity
+            android:name=".ChinaScoreResults"
+            android:exported="false" />
+        <activity
+            android:name=".chinalanguage5"
+            android:exported="false" />
+        <activity
+            android:name=".chinalanguage4"
+            android:exported="false" />
+        <activity
+            android:name=".chinalanguage3"
+            android:exported="false" />
+        <activity
+            android:name=".chinalanguage2"
+            android:exported="false" />
+        <activity
+            android:name=".italylanguange"
+            android:exported="false" />
+        <activity
+            android:name=".ItalyScoreResults"
+            android:exported="false" />
+        <activity
+            android:name=".italylanguage5"
+            android:exported="false" />
+        <activity
+            android:name=".italylanguage4"
+            android:exported="false" />
+        <activity
+            android:name=".italylanguage3"
+            android:exported="false" />
+        <activity
+            android:name=".italylanguage2"
+            android:exported="false" />
+        <activity
+            android:name=".SpainScoreResults"
+            android:exported="false" />
+        <activity
+            android:name=".spainlanguage5"
+            android:exported="false" />
+        <activity
+            android:name=".spainlanguage4"
+            android:exported="false" />
+        <activity
+            android:name=".spainlanguage3"
+            android:exported="false" />
+        <activity
+            android:name=".spainlanguage2"
+            android:exported="false" />
+        <activity
+            android:name=".japanlanguage5"
+            android:exported="false" />
+        <activity
+            android:name=".JapaneseScoreResults"
+            android:exported="false" />
+        <activity
+            android:name=".japaneselanguage5"
+            android:exported="false" />
+        <activity
+            android:name=".japanlanguage4"
+            android:exported="false" />
+        <activity
+            android:name=".japanlanguage3"
+            android:exported="false" />
+        <activity
+            android:name=".japanlanguage2"
+            android:exported="false" />
+        <activity
             android:name=".KoreanScoreResults"
             android:exported="false" />
         <activity
@@ -40,9 +106,6 @@
         <activity android:name=".KoreanLanguage2" />
         <activity
             android:name=".japanlanguage"
-            android:exported="false" />
-        <activity
-            android:name=".italylanguange"
             android:exported="false" />
         <activity
             android:name=".chinalanguage"
