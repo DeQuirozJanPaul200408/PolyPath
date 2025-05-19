@@ -3,8 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.polypath">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
     <application
         android:allowBackup="true"
+        android:usesCleartextTraffic="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
@@ -68,9 +72,6 @@
             android:name=".JapaneseScoreResults"
             android:exported="false" />
         <activity
-            android:name=".japaneselanguage5"
-            android:exported="false" />
-        <activity
             android:name=".japanlanguage4"
             android:exported="false" />
         <activity
@@ -83,7 +84,7 @@
             android:name=".KoreanScoreResults"
             android:exported="false" />
         <activity
-            android:name=".KoreanLanguage6"
+            android:name=".KoreanLanguage2"
             android:exported="false" />
         <activity
             android:name=".KoreanLanguage5"
@@ -103,7 +104,6 @@
         <activity
             android:name=".koreanlanguage"
             android:exported="false" />
-        <activity android:name=".KoreanLanguage2" />
         <activity
             android:name=".japanlanguage"
             android:exported="false" />
@@ -123,7 +123,7 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".CreateAccountActivity"
+            android:name=".CreateAccount"
             android:exported="false" />
         <activity android:name=".CountryListActivity" />
     </application>
