@@ -39,7 +39,6 @@ public class CreateAccountActivity extends AppCompatActivity {
         createAccountButton = findViewById(R.id.btnCreateAccount);
         backButton = findViewById(R.id.btnBack);
 
-        // Initially hide the result message
         resultView.setVisibility(View.GONE);
 
         createAccountButton.setOnClickListener(view -> {
@@ -47,7 +46,6 @@ public class CreateAccountActivity extends AppCompatActivity {
             String email = emailField.getText().toString().trim();
             String password = passwordField.getText().toString().trim();
 
-            // Clear previous error messages
             resultView.setVisibility(View.GONE);
 
             if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
@@ -73,18 +71,15 @@ public class CreateAccountActivity extends AppCompatActivity {
                         String message = json.getString("message");
 
                         if ("success".equals(status)) {
-                            // Optionally save user's full name
                             SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
                             SharedPreferences.Editor editor = prefs.edit();
                             editor.putString(KEY_FULL_NAME, name);
                             editor.apply();
 
-                            // Show success message and proceed to login
                             Toast.makeText(this, "Sign up successful! Please log in.", Toast.LENGTH_LONG).show();
                             startActivity(new Intent(this, LoginActivity.class));
                             finish();
                         } else {
-                            // Show error message from the server (like "Email already taken")
                             resultView.setText(message);
                             resultView.setTextColor(Color.RED);
                             resultView.setVisibility(View.VISIBLE);
@@ -113,7 +108,6 @@ public class CreateAccountActivity extends AppCompatActivity {
             }
         };
 
-        // Add the request to the request queue
         VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
 }

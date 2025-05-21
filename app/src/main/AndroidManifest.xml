@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.polypath">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,119 +14,49 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PolyPath"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <activity
-            android:name=".ChinaScoreResults"
-            android:exported="false" />
-        <activity
-            android:name=".chinalanguage5"
-            android:exported="false" />
-        <activity
-            android:name=".chinalanguage4"
-            android:exported="false" />
-        <activity
-            android:name=".chinalanguage3"
-            android:exported="false" />
-        <activity
-            android:name=".chinalanguage2"
-            android:exported="false" />
-        <activity
-            android:name=".italylanguange"
-            android:exported="false" />
-        <activity
-            android:name=".ItalyScoreResults"
-            android:exported="false" />
-        <activity
-            android:name=".italylanguage5"
-            android:exported="false" />
-        <activity
-            android:name=".italylanguage4"
-            android:exported="false" />
-        <activity
-            android:name=".italylanguage3"
-            android:exported="false" />
-        <activity
-            android:name=".italylanguage2"
-            android:exported="false" />
-        <activity
-            android:name=".SpainScoreResults"
-            android:exported="false" />
-        <activity
-            android:name=".spainlanguage5"
-            android:exported="false" />
-        <activity
-            android:name=".spainlanguage4"
-            android:exported="false" />
-        <activity
-            android:name=".spainlanguage3"
-            android:exported="false" />
-        <activity
-            android:name=".spainlanguage2"
-            android:exported="false" />
-        <activity
-            android:name=".japanlanguage5"
-            android:exported="false" />
-        <activity
-            android:name=".JapaneseScoreResults"
-            android:exported="false" />
-        <activity
-            android:name=".japaneselanguage5"
-            android:exported="false" />
-        <activity
-            android:name=".japanlanguage4"
-            android:exported="false" />
-        <activity
-            android:name=".japanlanguage3"
-            android:exported="false" />
-        <activity
-            android:name=".japanlanguage2"
-            android:exported="false" />
-        <activity
-            android:name=".KoreanScoreResults"
-            android:exported="false" />
-        <activity
-            android:name=".KoreanLanguage6"
-            android:exported="false" />
-        <activity
-            android:name=".KoreanLanguage5"
-            android:exported="false" />
-        <activity
-            android:name=".KoreanLanguage4"
-            android:exported="false" />
-        <activity
-            android:name=".KoreanLanguage3"
-            android:exported="false" />
-        <activity
-            android:name=".loginButton"
-            android:exported="false" />
-        <activity
-            android:name=".spainlanguage"
-            android:exported="false" />
-        <activity
-            android:name=".koreanlanguage"
-            android:exported="false" />
+
+        <activity android:name=".ChinaScoreResults" android:exported="false" />
+        <activity android:name=".chinalanguage5" android:exported="false" />
+        <activity android:name=".chinalanguage4" android:exported="false" />
+        <activity android:name=".chinalanguage3" android:exported="false" />
+        <activity android:name=".chinalanguage2" android:exported="false" />
+        <activity android:name=".italylanguange" android:exported="false" />
+        <activity android:name=".ItalyScoreResults" android:exported="false" />
+        <activity android:name=".italylanguage5" android:exported="false" />
+        <activity android:name=".italylanguage4" android:exported="false" />
+        <activity android:name=".italylanguage3" android:exported="false" />
+        <activity android:name=".italylanguage2" android:exported="false" />
+        <activity android:name=".SpainScoreResults" android:exported="false" />
+        <activity android:name=".spainlanguage5" android:exported="false" />
+        <activity android:name=".spainlanguage4" android:exported="false" />
+        <activity android:name=".spainlanguage3" android:exported="false" />
+        <activity android:name=".spainlanguage2" android:exported="false" />
+        <activity android:name=".japanlanguage5" android:exported="false" />
+        <activity android:name=".JapaneseScoreResults" android:exported="false" />
+        <activity android:name=".japanlanguage" android:exported="false" />
+        <activity android:name=".japanlanguage4" android:exported="false" />
+        <activity android:name=".japanlanguage3" android:exported="false" />
+        <activity android:name=".japanlanguage2" android:exported="false" />
+        <activity android:name=".KoreanScoreResults" android:exported="false" />
+        <activity android:name=".KoreanLanguage5" android:exported="false" />
+        <activity android:name=".KoreanLanguage4" android:exported="false" />
+        <activity android:name=".KoreanLanguage3" android:exported="false" />
+        <activity android:name=".loginButton" android:exported="false" />
+        <activity android:name=".spainlanguage" android:exported="false" />
+        <activity android:name=".koreanlanguage" android:exported="false" />
         <activity android:name=".KoreanLanguage2" />
-        <activity
-            android:name=".japanlanguage"
-            android:exported="false" />
-        <activity
-            android:name=".chinalanguage"
-            android:exported="false" /> <!-- Main launcher activity -->
-        <activity
-            android:name=".MainActivity"
+        <activity android:name=".chinalanguage" android:exported="false" />
+        <activity android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Other activities -->
-        <activity
-            android:name=".LoginActivity"
-            android:exported="false" />
-        <activity
-            android:name=".CreateAccountActivity"
-            android:exported="false" />
+        </activity>
+        <activity android:name=".LoginActivity" android:exported="false" />
+        <activity android:name=".CreateAccountActivity" android:exported="false" />
         <activity android:name=".CountryListActivity" />
     </application>
 

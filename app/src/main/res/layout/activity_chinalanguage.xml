@@ -104,7 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="Hello"
+            android:text="You're Welcome"
             android:textColor="@color/black"
             android:textSize="17dp" />
 
@@ -113,7 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="Hi"
+            android:text="What is your name?"
             android:textColor="@color/black"
             android:textSize="17dp" />
 
@@ -131,7 +131,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="What's up"
+            android:text="How are you?"
             android:textColor="@color/black"
             android:textSize="17dp" />
     </RadioGroup>

@@ -103,7 +103,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="What Happend?"
+            android:text="Pardo me"
             android:textColor="@color/black"
             android:textSize="17dp"/>
 
@@ -112,7 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="What is your name?"
+            android:text="Excuse me"
             android:textColor="@color/black"
             android:textSize="17dp"/>
 
@@ -121,7 +121,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="What is up??"
+            android:text="I am sorry"
             android:textColor="@color/black"
             android:textSize="17dp"/>
 
