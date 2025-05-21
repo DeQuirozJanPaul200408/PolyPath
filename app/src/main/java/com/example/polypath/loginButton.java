@@ -24,7 +24,7 @@ public class loginButton extends AppCompatActivity {
         });
 
         create.setOnClickListener(v -> {
-            Intent intent = new Intent(loginButton.this, CreateAccountActivity.class);
+            Intent intent = new Intent(loginButton.this, CreateAccount.class);
             startActivity(intent);
         });
     }
