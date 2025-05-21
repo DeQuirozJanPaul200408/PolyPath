@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -26,7 +25,8 @@ public class CountryListActivity extends AppCompatActivity {
             R.drawable.korea,
             R.drawable.sspian,
     };
-    int selectedPosition = 0;
+
+    LanguageAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +34,7 @@ public class CountryListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_country_list);
 
         languageListView = findViewById(R.id.languageListView);
-        LanguageAdapter adapter = new LanguageAdapter(this, languages, flags);
-        adapter.setSelectedPosition(selectedPosition);
+        adapter = new LanguageAdapter(this, languages, flags);
         languageListView.setAdapter(adapter);
     }
 
@@ -52,10 +51,6 @@ public class CountryListActivity extends AppCompatActivity {
             this.languages = languages;
             this.flags = flags;
             this.inflater = LayoutInflater.from(context);
-        }
-
-        void setSelectedPosition(int position) {
-            selectedPos = position;
         }
 
         @Override
@@ -85,28 +80,42 @@ public class CountryListActivity extends AppCompatActivity {
             imgFlag.setImageResource(flags[i]);
             tvLanguage.setText(languages[i]);
 
+
+            if (selectedPos == i) {
+                btnSelect.setText("Selected");
+                btnSelect.setBackgroundColor(context.getResources().getColor(android.R.color.holo_blue_light));
+            } else {
+                btnSelect.setText("Select");
+                btnSelect.setBackgroundColor(context.getResources().getColor(android.R.color.holo_red_dark));
+            }
+
             btnSelect.setOnClickListener(v -> {
-                Intent intent;
-                switch (i) {
-                    case 0:
-                        intent = new Intent(context, chinalanguage.class);
-                        break;
-                    case 1:
-                        intent = new Intent(context, italylanguange.class);
-                        break;
-                    case 2:
-                        intent = new Intent(context, japanlanguage.class);
-                        break;
-                    case 3:
-                        intent = new Intent(context, koreanlanguage.class);
-                        break;
-                    case 4:
-                        intent = new Intent(context, spainlanguage.class);
-                        break;
-                    default:
-                        return;
+                if (selectedPos != i) {
+                    selectedPos = i;
+                    notifyDataSetChanged();
+
+                    Intent intent;
+                    switch (i) {
+                        case 0:
+                            intent = new Intent(context, chinalanguage.class);
+                            break;
+                        case 1:
+                            intent = new Intent(context, italylanguange.class);
+                            break;
+                        case 2:
+                            intent = new Intent(context, japanlanguage.class);
+                            break;
+                        case 3:
+                            intent = new Intent(context, koreanlanguage.class);
+                            break;
+                        case 4:
+                            intent = new Intent(context, spainlanguage.class);
+                            break;
+                        default:
+                            return;
+                    }
+                    context.startActivity(intent);
                 }
-                context.startActivity(intent);
             });
 
             return view;

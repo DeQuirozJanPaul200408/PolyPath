@@ -4,18 +4,25 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.android.volley.Request;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class CreateAccountActivity extends AppCompatActivity {
 
-    EditText fullName, email;
-    TextView result;
-    Button createAccount, backButton;
+    EditText fullNameField, emailField, passwordField;
+    TextView resultView;
+    Button createAccountButton, backButton;
 
     public static final String PREFS_NAME = "UserPrefs";
     public static final String KEY_FULL_NAME = "full_name";
@@ -25,39 +32,88 @@ public class CreateAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account);
 
-        fullName = findViewById(R.id.etFullName);
-        email = findViewById(R.id.etCreateEmail);
-        result = findViewById(R.id.tvCreateResult);
-        createAccount = findViewById(R.id.btnCreateAccount);
-        backButton = findViewById(R.id.btnBack); // Make sure this ID exists in your XML
+        fullNameField = findViewById(R.id.etFullName);
+        emailField = findViewById(R.id.etCreateEmail);
+        passwordField = findViewById(R.id.etPassword);
+        resultView = findViewById(R.id.tvCreateResult);
+        createAccountButton = findViewById(R.id.btnCreateAccount);
+        backButton = findViewById(R.id.btnBack);
 
-        createAccount.setOnClickListener(view -> {
-            String name = fullName.getText().toString().trim();
-            String mail = email.getText().toString().trim();
+        // Initially hide the result message
+        resultView.setVisibility(View.GONE);
 
-            if (name.isEmpty() || mail.isEmpty()) {
-                result.setText("All fields are required.");
-                result.setTextColor(Color.RED);
+        createAccountButton.setOnClickListener(view -> {
+            String name = fullNameField.getText().toString().trim();
+            String email = emailField.getText().toString().trim();
+            String password = passwordField.getText().toString().trim();
+
+            // Clear previous error messages
+            resultView.setVisibility(View.GONE);
+
+            if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                resultView.setText("All fields are required.");
+                resultView.setTextColor(Color.RED);
+                resultView.setVisibility(View.VISIBLE);
             } else {
-                SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putString(KEY_FULL_NAME, name);
-                editor.apply();
-
-                Intent intent = new Intent(CreateAccountActivity.this, LoginActivity.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
+                createAccountOnServer(name, email, password);
             }
-
-            result.setVisibility(View.VISIBLE);
         });
 
         backButton.setOnClickListener(v -> finish());
     }
 
-    private void clearFields() {
-        fullName.setText("");
-        email.setText("");
-        fullName.requestFocus();
+    private void createAccountOnServer(String name, String email, String password) {
+        StringRequest request = new StringRequest(Request.Method.POST, Endpoints.CREATE_ACCOUNT,
+                response -> {
+                    Log.d("CREATE_ACCOUNT_RESPONSE", response);
+
+                    try {
+                        JSONObject json = new JSONObject(response);
+                        String status = json.getString("status");
+                        String message = json.getString("message");
+
+                        if ("success".equals(status)) {
+                            // Optionally save user's full name
+                            SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+                            SharedPreferences.Editor editor = prefs.edit();
+                            editor.putString(KEY_FULL_NAME, name);
+                            editor.apply();
+
+                            // Show success message and proceed to login
+                            Toast.makeText(this, "Sign up successful! Please log in.", Toast.LENGTH_LONG).show();
+                            startActivity(new Intent(this, LoginActivity.class));
+                            finish();
+                        } else {
+                            // Show error message from the server (like "Email already taken")
+                            resultView.setText(message);
+                            resultView.setTextColor(Color.RED);
+                            resultView.setVisibility(View.VISIBLE);
+                        }
+                    } catch (Exception e) {
+                        resultView.setText("Error parsing server response.");
+                        resultView.setTextColor(Color.RED);
+                        resultView.setVisibility(View.VISIBLE);
+                        Log.e("PARSE_ERROR", "Exception: " + e.getMessage());
+                    }
+                },
+                error -> {
+                    resultView.setText("Network error: " + error.getMessage());
+                    resultView.setTextColor(Color.RED);
+                    resultView.setVisibility(View.VISIBLE);
+                    Log.e("VOLLEY_ERROR", error.toString());
+                }
+        ) {
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("USERNAME", name);
+                params.put("EMAIL", email);
+                params.put("PASSWORD", password);
+                return params;
+            }
+        };
+
+        // Add the request to the request queue
+        VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
 }

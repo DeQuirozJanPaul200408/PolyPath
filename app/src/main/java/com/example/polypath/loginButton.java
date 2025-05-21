@@ -13,7 +13,7 @@ public class loginButton extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_button); // Make sure this layout exists
+        setContentView(R.layout.activity_login_button);
 
         loginButton = findViewById(R.id.btnlogin);
         create = findViewById(R.id.btnCreate);
