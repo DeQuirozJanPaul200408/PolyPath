@@ -35,6 +35,6 @@ public class chinalanguage3 extends AppCompatActivity {
         });
 
         Button btnBack = findViewById(R.id.btnBack);
-        btnBack.setOnClickListener(v -> finish()); // back to chinalanguage2.java
+        btnBack.setOnClickListener(v -> finish());
     }
 }

@@ -26,6 +26,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public static final String PREFS_NAME = "UserPrefs";
     public static final String KEY_FULL_NAME = "full_name";
+    public static final String KEY_USERNAME = "username";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,14 +39,12 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.btnLogin);
         backButton = findViewById(R.id.btnBack);
 
-        // Initially hide the result message
         loginResult.setVisibility(View.GONE);
 
         loginButton.setOnClickListener(view -> {
             String enteredName = usernameField.getText().toString().trim();
             String enteredPassword = passwordField.getText().toString().trim();
 
-            // Clear previous error messages
             loginResult.setVisibility(View.GONE);
 
             if (enteredName.isEmpty() || enteredPassword.isEmpty()) {
@@ -55,7 +54,6 @@ public class LoginActivity extends AppCompatActivity {
                 return;
             }
 
-            // Attempt to check the user credentials from the server
             checkUserFromServer(enteredName, enteredPassword);
         });
 
@@ -65,26 +63,25 @@ public class LoginActivity extends AppCompatActivity {
     private void checkUserFromServer(String username, String password) {
         StringRequest request = new StringRequest(Request.Method.POST, Endpoints.LOG_IN,
                 response -> {
-                    Log.d("LOGIN_RESPONSE", response);  // Log the full response for better debugging
+                    Log.d("LOGIN_RESPONSE", response);
                     try {
                         JSONObject json = new JSONObject(response);
                         String status = json.getString("status");
                         String message = json.getString("message");
 
-                        // Debugging: Check what is being returned
                         Log.d("LOGIN_STATUS", "Status: " + status);
                         Log.d("LOGIN_MESSAGE", "Message: " + message);
 
                         if ("success".equals(status)) {
                             String fullName = json.getString("full_name");
 
-                            // Save the full name in shared preferences
+                            // ✅ Save full name and username to SharedPreferences
                             SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
                             SharedPreferences.Editor editor = prefs.edit();
                             editor.putString(KEY_FULL_NAME, fullName);
+                            editor.putString(KEY_USERNAME, username); // ✅ Save username
                             editor.apply();
 
-                            // Show success message and proceed to next activity
                             loginResult.setText("Login successful! Welcome " + fullName);
                             loginResult.setTextColor(Color.BLACK);
                             loginResult.setVisibility(View.VISIBLE);
@@ -93,7 +90,6 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent);
                             finish();
                         } else {
-                            // Show error message for incorrect credentials
                             loginResult.setText(message);
                             loginResult.setTextColor(Color.RED);
                             loginResult.setVisibility(View.VISIBLE);
@@ -121,7 +117,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         };
 
-        // Add the request to the request queue
         VolleySingleton.getInstance(this).addToRequestQueue(request);
     }
 }

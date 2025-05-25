@@ -112,7 +112,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif-condensed-medium"
-            android:text="You Good?"
+            android:text="What time is it?"
             android:textColor="@color/black"
             android:textSize="17dp" />
 
